@@ -1,0 +1,24 @@
+---
+- name: install apt required dependecies for kube
+  ansible.builtin.apt:
+    name:
+      - apt-transport-https 
+      - ca-certificates 
+      - curl
+- name: add gpg key for kube repositories
+  ansible.builtin.get_url:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    dest: /usr/share/keyrings/kubernetes-archive-keyring.gpg
+
+- name: add GPG ket and apt repository
+  ansible.builtin.apt_repository:
+    repo: "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main"
+    state: present
+  notify: aptupdate
+
+- name: install kube tools
+  ansible.builtin.apt:
+    name:
+      - kubelet
+      - kubeadm
+      - kubectl
