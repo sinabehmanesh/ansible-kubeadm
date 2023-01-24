@@ -8,9 +8,9 @@ it will make sure everything is healthy and ready to use
 Requirements
 ------------
 
-* at least 2 ubuntu instances with minimum 2GB of RAM and 1 core of CPU
-* stable internet connection
-
+* at least 2 ubuntu instances with minimum 2GB of RAM and 1 core of CPU.
+* stable internet connection.
+* this version of role does not support IP tables and firewall configurations, please allow k8s ports in your firewall.
 Role Variables
 --------------
 

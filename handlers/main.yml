@@ -1,2 +1,5 @@
 ---
+- name: aptupdate
+  ansible.builtin.apt:
+    update_cache: yes
 # handlers file for kubeadm

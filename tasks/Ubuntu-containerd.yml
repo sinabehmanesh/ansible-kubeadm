@@ -1,0 +1,7 @@
+---
+- name: ubuntu containerd check
+  ansible.builtin.apt:
+    name:
+      - containerd
+    state: present
+  notify: aptupdate

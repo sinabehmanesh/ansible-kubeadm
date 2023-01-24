@@ -1,2 +1,30 @@
 ---
-# tasks file for kubeadm
+- name: Kubeadm setup(cluster initialization)
+  hosts: all
+  gather_facts: true
+  become: true
+
+  vars_files:
+    - ../vars/sudo
+
+  tasks:
+  - name: gathering os vars
+    debug:
+      msg: "{{ ansible_distribution }}"
+
+
+#check if containerd socket is enabled and if not install it(CRI)
+  - include_tasks: Ubuntu-containerd.yml
+    when: ansible_distribution == "Ubuntu"
+
+#disable swapp
+  - name: swapp off
+    ansible.builtin.shell: |
+      swapoff -a
+
+  - include_tasks: sysctl_config.yml
+    when: ansible_distribution == "Ubuntu"
+
+#install kubelet, kubeadm and kubectl
+  - include_tasks: kube-installation.yml
+    when: ansible_distribution == "Ubuntu"
