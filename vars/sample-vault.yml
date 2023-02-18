@@ -1,0 +1,3 @@
+ansible_sudo_pass: test007
+ansible_ssh_user: test
+ansible_ssh_password: test007
