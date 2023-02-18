@@ -1,3 +1,0 @@
-[k8s]
-192.168.88.234 ansible_ssh_user=test
-

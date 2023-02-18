@@ -1,0 +1,3 @@
+ansible_sudo_pass: Your User sudo password
+ansible_ssh_user: Your ssh user
+ansible_ssh_password: Your ssh login password
