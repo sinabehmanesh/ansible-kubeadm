@@ -14,7 +14,10 @@
   ansible.builtin.apt_repository:
     repo: "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main"
     state: present
-  notify: aptupdate
+
+- name: update apt cache
+  ansible.builtin.apt:
+    update_cache: yes
 
 - name: install kube tools
   ansible.builtin.apt:

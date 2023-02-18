@@ -4,4 +4,4 @@
     name:
       - containerd
     state: present
-  notify: aptupdate
+    update_cache: yes
