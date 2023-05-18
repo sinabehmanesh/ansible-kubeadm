@@ -22,6 +22,7 @@
     ansible.builtin.shell: |
       swapoff -a
 
+#config kernel metrics **if you have specefic kernel metrics please do edit sysctl config at files directory**
   - include_tasks: sysctl_config.yml
     when: ansible_distribution == "Ubuntu"
 
