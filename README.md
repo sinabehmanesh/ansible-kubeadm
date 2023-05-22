@@ -22,17 +22,23 @@ this play book will deploy calico as CNI. if you prefer another one, them edit k
 CIDR used for cluster initialization is 192.168.0.0/16.
 if you want to change that, edit file and for more info check calico documentation(or any other CNI providre you want to deploy).
 
-Dependencies
-------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
-
 CRI
 ------------
 default containerd CRI is included. i will replace it with CRIO as main CRI.
 optional CRI will be available in the next updates.
 
 **this version does not support docker as CRI, only Containerd is included**
+
+
+Future plans
+------------
+as mentioned eariler i will provide:
+* optional CNI and CRI for this cluster setup.
+* provide helm charts for basic monitoring and administration tools
+* i will add multi mastering tasks to include.
+* if i live long enough to do it, i will add EKS and GKE fast deployment.(integration with terraform is possible)
+
+wish me luck :D
 
 License
 -------
