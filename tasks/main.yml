@@ -28,13 +28,13 @@
 #install kubelet, kubeadm and kubectl
   - include_tasks: kube-installation.yml
     when: ansible_distribution == "Ubuntu"
-    ignore_errors: true
 
+#initialize kubernetes clustre
   - name: Show list of masters
     debug:
       msg: "{{ ansible_hostname }}"
     when: ansible_facts['hostname'] is regex('master*')
 
-  - name: setup cluster using kubeadm init ** hostname should be master1 **
+  - name: setup cluster using kubeadm init ** first master hostname should be master1 **
     include_tasks: kubeadm-init.yml
     when: ansible_facts['hostname'] == "master1"

@@ -6,6 +6,8 @@
   vars:
     ansible_command_timeout: 30
 
+- name: kube config ops
+  shell: mkdir -p $HOME/.kube ; cp -i /etc/kubernetes/admin.conf $HOME/.kube/config ; chown $(id -u):$(id -g) $HOME/.kube/config
+
 - name: after successfull setup, install calico CNI
   shell: curl https://raw.githubusercontent.com/projectcalico/calico/v3.25.1/manifests/calico.yaml -O ; kubectl apply -f calico.yaml
-
