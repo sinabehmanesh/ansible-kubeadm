@@ -17,7 +17,9 @@ Role Variables
 ansible vault:
 inside vars directory we have a sample vault yml file. you can edit file and replace your ssh login variables.
 after that run 
-> ansible-vault encrypt sample-vault.yml
+```
+ ansible-vault encrypt sample-vault.yml
+```
 and provide a password. remember add **--ask-vault-password** at the command prompt for ansible-playbook.
 
 no more variables are included. but there will be more in the future.
