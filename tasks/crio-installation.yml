@@ -1,0 +1,37 @@
+---
+  vars_files:
+    - ../vars/crio-vars.yml
+
+- name: install CRIO CRI requirements
+  ansible.builtin.apt:
+    name:
+      - apt-transport-https
+      - ca-certificates 
+      - curl 
+      - gnupg2 
+      - software-properties-common
+    state: present
+    update_cache: yes
+
+- name: add crio repository
+  ansible.builtin.shell: |
+    - echo "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/$OS/ /"| sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
+    - echo "deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/$CRIO_VERSION/$OS/ /"|sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable:cri-o:$CRIO_VERSION.list
+  
+- name: import GPG keys
+  ansible.builtin.rpm_key:
+    state: present
+    key: https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable:cri-o:$CRIO_VERSION/$OS/Release.key 
+
+- name: import GPG keys
+  ansible.builtin.rpm_key:
+    state: present
+    key: https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/$OS/Release.key
+
+- name: install crio socket
+  ansible.builtin.apt:
+    name:
+      - cri-o
+      - cri-o-runc
+    state: present
+    update_cache: yes
