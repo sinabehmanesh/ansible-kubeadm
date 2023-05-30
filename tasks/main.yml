@@ -25,6 +25,9 @@
   - include_tasks: sysctl_config.yml
     when: ansible_distribution == "Ubuntu"
 
+  - include_tasks: crio-installation.yml
+    when: ansible_distribution == "Ubuntu'
+
 #install kubelet, kubeadm and kubectl
   - include_tasks: kube-installation.yml
     when: ansible_distribution == "Ubuntu"
